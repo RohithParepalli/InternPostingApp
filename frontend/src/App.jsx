@@ -16,7 +16,7 @@ const App = () => {
   const addJob = async (newJob)=>{
     const jobData = {
       title: newJob.title,
-      type: newJob.type, // Used to be jobtype in schema
+      type: newJob.type, 
       location: newJob.location,
       description: newJob.description,
       salary: newJob.salary,
@@ -39,9 +39,9 @@ const App = () => {
       });
       
       const data = await res.json();
-      console.log("API response:", data); // Log the full API response
+      console.log("API response:", data); 
       
-      // Check if the response indicates success before showing toast
+      
       if (data.success) {
         toast.success('Job added successfully');
         navigate('/jobs');
@@ -107,8 +107,8 @@ const App = () => {
         <Route index element={<Homepage />} />
         <Route path='/jobs' element={<Jobspage />} />
         <Route path='/add-job' element={<Addjobpage addJobSubmit={addJob} />} />
-        <Route path='/edit-job/:id' element={<Editjob updatejobsubmit={updatejobsubmit} />}loader={jobLoader}  />
-        <Route path='/jobs/:id' element={<Jobpage deletejob={deletejob}/>}loader={jobLoader}  />
+        <Route path='/edit-job/:id' element={<Editjob updatejobsubmit={updatejobsubmit} />} loader={jobLoader} />
+        <Route path='/jobs/:id' element={<Jobpage deletejob={deletejob}/>} loader={jobLoader} />
         <Route path='*' element={<Notfoundpage />} />
       </Route>
     )
